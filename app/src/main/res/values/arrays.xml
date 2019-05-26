@@ -1,0 +1,11 @@
+<resources>
+    <string-array name="cities">
+        <item>Moscow</item>
+        <item>St Petersburg</item>
+        <item>Novosibirsk</item>
+        <item>Nizhniy Novgorod</item>
+        <item>Rostov-on-Don</item>
+        <item>Krasnodar</item>
+        <item>Sochi</item>
+    </string-array>
+</resources>
