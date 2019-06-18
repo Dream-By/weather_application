@@ -11,29 +11,32 @@ import java.util.List;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
-    private final List<String> dataSource;
+    private final List<City> dataSource;
     private OnItemClickListener itemClickListener;
 
-    CityAdapter(List<String> dataSource) {
+    CityAdapter(List<City> dataSource) {
         this.dataSource = dataSource;
+    }
+
+    @NonNull
+    @Override
+    public CityAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.cities_list, parent, false);
+        ViewHolder vh = new ViewHolder(view);
+
+        return vh;
     }
 
     void SetOnItemClickListener(OnItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
-    @NonNull
-    @Override
-    public CityAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.cities_list, parent, false);
-        return new ViewHolder(view);
-    }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String item = dataSource.get(position);
-        holder.data.setText(item);
+        City item = dataSource.get(position);
+        holder.city.setText(item.getName());
     }
 
     @Override
@@ -42,24 +45,22 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, String data);
+        void onItemClick(View view, int position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView data;
+
+        private final TextView city;
 
         ViewHolder(View view) {
             super(view);
-            data = view.findViewById(R.id.data);
 
-            data.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (itemClickListener != null) {
-                        itemClickListener.onItemClick(v, getAdapterPosition(), data.toString());
-                    }
-                }
+            city = view.findViewById(R.id.city);
+            city.setOnClickListener(view1 -> {
+                if (itemClickListener != null)
+                    itemClickListener.onItemClick(view1, getAdapterPosition());
             });
         }
     }
 }
+
