@@ -1,4 +1,4 @@
-package com.example.weather.rest.entites;
+package com.example.weather.rest.network;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,6 @@
 package com.example.weather.rest;
 
-import com.example.weather.rest.entites.WeatherRequestRestModel;
+import com.example.weather.rest.network.WeatherRequestRestModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -16,7 +16,7 @@ import com.example.weather.rest.OpenWeatherRepo;
 import com.example.weather.rest.OpenWeatherRepoCoord;
 import com.example.weather.rest.database.DatabaseHelper;
 import com.example.weather.rest.database.WeatherTable;
-import com.example.weather.rest.entites.WeatherRequestRestModel;
+import com.example.weather.rest.network.WeatherRequestRestModel;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -43,7 +43,7 @@ public class ResultFragment extends Fragment {
         super.onCreate(savedInstanceState);
         weatherFont = Typeface.createFromAsset(Objects.requireNonNull(getActivity()).getAssets(), FONT_FILENAME);
         database = new DatabaseHelper(getActivity().getApplicationContext()).getWritableDatabase();
-        // requestRetrofit(new CityPreference(getActivity()).getCity());
+        requestRetrofit(new CityPreference(getActivity()).getCity());
     }
 
     @Override
@@ -190,4 +190,3 @@ public class ResultFragment extends Fragment {
         weatherIcon.setText(icon);
     }
 }
-
